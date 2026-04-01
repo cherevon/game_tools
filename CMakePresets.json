@@ -1,0 +1,63 @@
+{
+  "version": 5,
+  "include": [
+    "./build/ConanPresets.json"
+  ],
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "installDir": "./install",
+      "cacheVariables": {
+        "CMAKE_COMPILE_WARNING_AS_ERROR": true,
+        "BUILD_SHARED_LIBS": true
+      }
+    },
+    {
+      "name": "release",
+      "inherits": [
+        "base",
+        "conan-release"
+      ],
+      "displayName": "Release"
+    },
+    {
+      "name": "debug",
+      "inherits": [
+        "base",
+        "conan-debug"
+      ],
+      "displayName": "Debug"
+    },
+    {
+      "name": "test",
+      "inherits": [
+        "debug"
+      ],
+      "displayName": "Test",
+      "cacheVariables": {
+        "CHECO_ENABLE_TESTS": true
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "build-release",
+      "description": "",
+      "displayName": "Build Release",
+      "configurePreset": "release"
+    },
+    {
+      "name": "build-debug",
+      "description": "",
+      "displayName": "Build Debug",
+      "configurePreset": "debug"
+    },
+    {
+      "name": "build-test",
+      "description": "",
+      "displayName": "Build Test",
+      "configurePreset": "test"
+    }
+  ]
+}
