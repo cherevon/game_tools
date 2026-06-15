@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.27)
 
-project("game_tools")
+project("game_tools_repo" LANGUAGES CXX)
 
 # Options
 option(BUILD_SHARED_LIBS "Build using shared libraries" OFF)
